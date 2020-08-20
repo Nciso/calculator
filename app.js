@@ -42,7 +42,8 @@ document
     if (event.target.innerText == "C") {
       state.display = "0.00";
       state.clearDisplay = true;
-      lastOperator = "+";
+      state.lastOperator = "+";
+      state.operands = [0, 0];
       return;
     }
 
@@ -53,38 +54,29 @@ document
     } else {
       state.display += event.target.innerText;
     }
+    console.log(state.operands, state.lastOperator);
   });
 
 // events for orange buttons (operators)
 document
   .getElementsByClassName("operator-tiles")[0]
   .addEventListener("click", function (event) {
-    state.operands[1] = state.display;
+    if (state.lastOperator != "=") {
+      state.operands[1] = state.display;
+    }
     state.clearDisplay = true;
     // convert operators into floats
     for (let i = 0; i < state.operands.length; i++) {
       state.operands[i] = parseFloat(state.operands[i]);
     }
+    console.log(state.operands, state.lastOperator);
     evaluate(state.operands, state.lastOperator);
+    state.operands[1] = 0;
     if (event.target.innerText == "=") {
       evaluate(state.operands, state.lastOperator);
+      state.operands[1] = 0;
+      console.log(state.operands, state.lastOperator);
     }
     state.lastOperator = event.target.innerText;
     state.display = parseFloat(state.operands[0]).toFixed(2);
   });
-
-function evaluate(operands, lastOperator) {
-  const [a, b] = operands;
-  //  implement sum
-  if (lastOperator == "+") {
-    operands[0] = sum(a, b);
-    operands[1] = 0;
-  }
-  //implement if statements here
-}
-
-// implement functions below
-
-function sum(a, b) {
-  return a + b;
-}
