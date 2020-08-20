@@ -1,0 +1,19 @@
+
+body {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.calculator {
+  display: grid;
+  grid-template-columns: repeat(4,4rem);
+  grid-template-rows: repeat(7, 4rem);
+  margin: 1rem, auto;
+}
+
+.display {
+  grid-column-start: 1;
+  grid-column-end: span 7;
+  background-color: black;
+}
