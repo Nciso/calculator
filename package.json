@@ -1,0 +1,22 @@
+{
+  "name": "calculator",
+  "version": "1.0.0",
+  "description": "simple calculator",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/Eencsio/calculator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/Eencsio/calculator/issues"
+  },
+  "homepage": "https://gitlab.com/Eencsio/calculator#readme",
+  "devDependencies": {
+    "jest": "^26.4.2"
+  }
+}
